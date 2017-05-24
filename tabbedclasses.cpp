@@ -1,4 +1,5 @@
 #include "tabbedclasses.h"
+#include "gradeobjects.h"
 
 TabbedClasses::TabbedClasses(QWidget *parent) : QWidget(parent)
 {

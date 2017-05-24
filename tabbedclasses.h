@@ -5,6 +5,8 @@
 
 class QTabWidget;
 
+class GradeObjects;
+
 class TabbedClasses : public QWidget
 {
     Q_OBJECT

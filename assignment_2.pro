@@ -5,7 +5,9 @@ QT += widgets
 
 SOURCES += \
     main.cpp \
-    tabbedclasses.cpp
+    tabbedclasses.cpp \
+    gradeobjects.cpp
 
 HEADERS += \
-    tabbedclasses.h
+    tabbedclasses.h \
+    gradeobjects.h
