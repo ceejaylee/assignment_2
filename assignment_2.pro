@@ -6,8 +6,10 @@ QT += widgets
 SOURCES += \
     main.cpp \
     tabbedclasses.cpp \
-    gradeobjects.cpp
+    gradeobjects.cpp \
+    slidergroup.cpp
 
 HEADERS += \
     tabbedclasses.h \
-    gradeobjects.h
+    gradeobjects.h \
+    slidergroup.h
