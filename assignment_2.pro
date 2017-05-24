@@ -4,4 +4,8 @@ TARGET = name_of_the_app
 QT += widgets
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    tabbedclasses.cpp
+
+HEADERS += \
+    tabbedclasses.h
