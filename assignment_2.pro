@@ -7,9 +7,11 @@ SOURCES += \
     main.cpp \
     tabbedclasses.cpp \
     gradeobjects.cpp \
-    slidergroup.cpp
+    slidergroup.cpp \
+    gradecalc.cpp
 
 HEADERS += \
     tabbedclasses.h \
     gradeobjects.h \
-    slidergroup.h
+    slidergroup.h \
+    gradecalc.h

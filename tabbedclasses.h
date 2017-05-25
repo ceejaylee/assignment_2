@@ -5,7 +5,7 @@
 
 class QTabWidget;
 
-class GradeObjects;
+class GradeCalc;
 
 class TabbedClasses : public QWidget
 {

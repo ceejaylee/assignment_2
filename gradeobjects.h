@@ -5,31 +5,21 @@
 
 class SliderGroup;
 
-class QSLider;
-class QDial;
-class QLabel;
-class QSpinBox;
-class QVector;
-
 class GradeObjects : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GradeObjects(const QString &hw_num, const QString &mt_num, QString &fp_num, QWidget *parent = 0);
+    explicit GradeObjects(const QString &number, QWidget *parent = 0);
 
 signals:
+    valueChanged(int value);
 
 private slots:
-    void hwEntered();
-    void mtEntered();
-    void fpEntered();
-    void finalEntered();
+    void Entered();
 
 
 private:
-    QString &hw_num;
-    QString &mt_num;
-    QString &fp_num;
+    QString &number;
 
     SliderGroup *hw_objs[hw_num];
     SliderGroup *mt_objs[mt_num];
@@ -37,7 +27,9 @@ private:
     SliderGroup *fp_obj;
     SliderGroup *final_obj;
 
-    SliderGroup *creategradeObjects(QString &text);
+    QProgressBar *class_score;
+
+    SliderGroup *createSlider(const QString &text);
 };
 
 #endif // GRADEOBJECTS_H

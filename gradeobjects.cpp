@@ -28,7 +28,8 @@ GradeObjects::GradeObjects(const QString &hw_num, const QString &mt_num, QString
             {
                 QString numbering = j + " ";
                 label += numbering;
-                hw_objs[j-1] = creategradeObjects(label);
+                hw_objs[j-1] = createSlider(label);
+                connect(hw_objs[j-1], SIGNAL(valueChanged(int), this, SLOT(hwEntered()));
                 mainLayout->addWidget(hw_objs[j-1], j-1, 0);
             }
         }
@@ -44,7 +45,7 @@ GradeObjects::GradeObjects(const QString &hw_num, const QString &mt_num, QString
                     QString numbering = j + " ";
                     label += j;
                 }
-                mt_objs[j-1] = creategradeObjects(label);
+                mt_objs[j-1] = createSlider(label);
                 mainLayout->addWidget(mt_objs[j-1], j-1, 1);
             }
         }
@@ -56,7 +57,7 @@ GradeObjects::GradeObjects(const QString &hw_num, const QString &mt_num, QString
             {
                 continue;
             }
-            fp_obj = creategradeObjects(label);
+            fp_obj = createSlider(label);
             int j = mtslider_num;
             mainLayout->addWidget(fp_obj, j , 1);
         }
@@ -65,13 +66,18 @@ GradeObjects::GradeObjects(const QString &hw_num, const QString &mt_num, QString
             n = 2;
             label = "Final Exam ";
 
-            final_obj = creategradeObjects(label);
+            final_obj = createSlider(label);
             int j = mtslider_num + fpslider_num;
             mainLayout->addWidget(fp_obj, j , 1);
         }
+
+        class_score = new QProgressBar;
+        class_score->setRange(0, 100);
+        class_score->setOrientation(Qt::Horizontal);
+        class_score->setTextVisible(true);
     }
 
-SliderGroup *GradeObjects::creategradeObjects(QString &text)
+SliderGroup *GradeObjects::createSlider(QString &text)
 {
     SliderGroup *sldrgrp = new SliderGroup(text);
     return sldrgrp;
