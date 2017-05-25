@@ -25,12 +25,12 @@ SliderGroup::SliderGroup(const QString &name, QWidget *parent) : QWidget(parent)
     connect(spinbox, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
 }
 
-void setMaximum(int value)
+void SliderGroup::setMaximum(int value)
 {
     slider->setMaximum(value);
 }
 
-void setValue(int value)
+void SliderGroup::setValue(int value)
 {
     slider->setValue(value);
     spinbox->setValue(value);
