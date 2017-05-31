@@ -18,7 +18,7 @@ signals:
 public slots:
 
 private:
-    QTabWidget *tabWidget;
+    QTabWidget *classTabs;
 };
 
 #endif // TABBEDCLASSES_H

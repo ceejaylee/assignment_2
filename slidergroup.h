@@ -18,7 +18,6 @@ signals:
     valueChanged(int value);
 
 public slots:
-    void setMaximum(int value);
     void setValue(int value);
 
 private:
@@ -26,7 +25,6 @@ private:
     QSlider *slider;
     QSpinBox *spinbox;
     QLabel *slash;
-    QLineEdit *max_display;
 };
 
 #endif // SLIDERGROUP_H

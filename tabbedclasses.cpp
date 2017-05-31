@@ -3,9 +3,9 @@
 
 TabbedClasses::TabbedClasses(QWidget *parent) : QWidget(parent)
 {
-    tabWidget = new QTabWidget;
-    tabWidget->addTab(new GradeCalc(8,2,0), tr("PIC 10B"));
-    tabWidget->addTab(new GradeCalc(3,1,1), tr("PIC 10C"));
+    classTabs = new QTabWidget;
+    classTabs->addTab(new GradeCalc(0), tr("PIC 10B"));
+    classTabs->addTab(new GradeCalc(1), tr("PIC 10C"));
 
     setWindowTitle(tr("Grade Calculator"));
 }

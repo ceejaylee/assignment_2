@@ -9,27 +9,26 @@ class GradeObjects : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GradeObjects(const QString &number, QWidget *parent = 0);
+    explicit GradeObjects(const QString &name, const QString &number, QWidget *parent = 0);
 
 signals:
     valueChanged(int value);
 
 private slots:
-    void Entered();
-
+    void addToList(int value);
 
 private:
+    QString &name;
     QString &number;
 
-    SliderGroup *hw_objs[hw_num];
-    SliderGroup *mt_objs[mt_num];
+    QString *scoresList[number];
+    SliderGroup *gradeObjects[number];
+    QString &sectionScore;
+    QString &sectionScoreDrop;
 
-    SliderGroup *fp_obj;
-    SliderGroup *final_obj;
-
-    QProgressBar *class_score;
-
-    SliderGroup *createSlider(const QString &text);
+    SliderGroup *createSlider(int &num, QString &text);
+    void calculateSectionGrade();
+    void dropLowestScore();
 };
 
 #endif // GRADEOBJECTS_H
