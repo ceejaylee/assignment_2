@@ -70,3 +70,24 @@ void GradeObjects::calculateSectionGrade()
     double percentage = total / number;
     sectionScore = percentage;
 }
+
+void GradeObjects::dropLowestScore()
+{
+    double total = 0;
+    double min = QString::number(scoresList[0]);
+    for (int i = 0; i < number; ++i)
+    {
+        total += QString::number(scoresList[i]) ;
+    }
+    for (int i = 0; i < number; ++i)
+    {
+        if (QString::number(scoresList[i]) < min)
+        {
+            min = QString::number(scoresList[i]);
+        }
+    }
+    total = total - min;
+    double percentage = total / (number - 1);
+    percentage = percentage / 100;
+    sectionScoreDrop = percentage;
+}

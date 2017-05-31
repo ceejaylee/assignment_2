@@ -1,16 +1,12 @@
 #include <QApplication>
-#include <QPushButton>
+
+#include "gradecalc.h"
 
 int main (int argc, char**argv)
 {
     QApplication app (argc, argv);
-
-
-    QPushButton button ("Hello world!");
-    button.setToolTip("So this is what a tooltip is...");
-    QFont font ("Courier");
-    button.setFont(font);
-    button.show();
+    GradeCalc grade_calculator;
+    grade_calculator.show();
 
     return app.exec();
 }

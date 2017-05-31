@@ -24,9 +24,11 @@ private:
     QString *scoresList[number];
     SliderGroup *gradeObjects[number];
     QString &sectionScore;
+    QString &sectionScoreDrop;
 
     SliderGroup *createSlider(int &num, QString &text);
     void calculateSectionGrade();
+    void dropLowestScore();
 };
 
 #endif // GRADEOBJECTS_H
