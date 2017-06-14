@@ -1,9 +1,9 @@
 #include "gradecalc.h"
 #include "gradeobjects.h"
 
-GradeCalc::GradeCalc(const QString &option, QWidget *parent) : QWidget(parent)
+GradeCalc::GradeCalc(const int option, QWidget *parent) : QWidget(parent)
 {
-    int select = QString::number(option);
+    int select = option;
 
     if (select == 0)
     {
@@ -37,7 +37,7 @@ GradeCalc::GradeCalc(const QString &option, QWidget *parent) : QWidget(parent)
     class_score->setOrientation(Qt::Horizontal);
     class_score->setTextVisible(true);
 
-    QGridLayout *mainLayout = new QGridLayout;
+    QGridLayout *mainLayout = new QGridLayout(this);
 #if defined(Q_OS_SYMBIAN) || defined(Q_WS_MAEMO_5) || defined(Q_WS_SIMULATOR)
     mainLayout->setSizeConstraint(QLayout::SetNoConstraint);
 #else
@@ -48,10 +48,10 @@ GradeCalc::GradeCalc(const QString &option, QWidget *parent) : QWidget(parent)
     mainLayout->addWidget(midtermSect, 0, 1, mt_num, 1);
     if (fp_num != 0)
     {
-    mainLayout->addWidget(finalproSect, mt_num, 1, 1);
+    mainLayout->addWidget(finalproSect, mt_num, 1, 1, 1);
     }
     int fe_row = mt_num + fp_num;
-    mainLayout->addWidget(finalexamSect, fe_row, 1, 1);
+    mainLayout->addWidget(finalexamSect, fe_row, 1, 1, 1);
     mainLayout->addWidget(final_grade_all, 9, 0);
     mainLayout->addWidget(final_grade_drop, 10, 0);
     mainLayout->addWidget(class_score, 11, 0, 1, 2);
@@ -61,11 +61,11 @@ GradeCalc::GradeCalc(const QString &option, QWidget *parent) : QWidget(parent)
 
 void GradeCalc::calculateFinalGradeAll()
 {
-    double homework = QString::toDouble(homeworkSect->sectionScore);
-    double midterm = QString::toDouble(midtermSect->sectionScore);
-    double finalProject = QString::toDouble(finalproSect->sectionScore);
-    double finalExam = QString::toDouble(finalexamSect->sectionScore);
-    double finalGrade;
+    double homework = homeworkSect->returnSectionScore();
+    double midterm = midtermSect->returnSectionScore();
+    double finalProject = finalproSect->returnSectionScore();
+    double finalExam = finalexamSect->returnSectionScore();
+    double finalGrade = 0;
 
     if (QString::number(option) == 0)
     {
@@ -81,11 +81,11 @@ void GradeCalc::calculateFinalGradeAll()
 }
 void GradeCalc::calculateFinalGradeDrop()
 {
-    double homework = QString::toDouble(homeworkSect->sectionScore);
-    double midterm = QString::toDouble(midtermSect->sectionScoreDrop);
-    double finalProject = QString::toDouble(finalproSect->sectionScore);
-    double finalExam = QString::toDouble(finalexamSect->sectionScore);
-    double finalGrade;
+    double homework = homeworkSect->returnSectionScoreDrop();
+    double midterm = midtermSect->returnSectionScoreDrop();
+    double finalProject = finalproSect->returnSectionScoreDrop();
+    double finalExam = finalexamSect->returnSectionScoreDrop();
+    double finalGrade = 0;
 
     if (QString::number(option) == 0)
     {
@@ -96,6 +96,5 @@ void GradeCalc::calculateFinalGradeDrop()
     {
         finalGrade = homework * 15 + finalExam * 50 + finalProject * 35;
     }
-
     class_score->setValue(finalGrade);
 }
