@@ -2,7 +2,8 @@
 
 SliderGroup::SliderGroup(const QString &name, QWidget *parent) : QWidget(parent)
 {
-    object_name = new QLabel(tr(name));
+    object_name = new QLabel;
+    object_name->setText(name);
 
     slider = new QSlider(Qt::Horizontal);
     slider->setTickPosition(QSlider::TicksBothSides);
@@ -25,4 +26,10 @@ void SliderGroup::setValue(int value)
     slider->setValue(value);
     spinbox->setValue(value);
     emit valueChanged(value);
+}
+
+QString SliderGroup::getObjectName()
+{
+    QString name = object_name->text();
+    return name;
 }

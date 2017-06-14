@@ -1,11 +1,11 @@
 #include <QApplication>
 
-#include "gradecalc.h"
+#include "tabbedclasses.h"
 
 int main (int argc, char**argv)
 {
     QApplication app (argc, argv);
-    GradeCalc grade_calculator;
+    TabbedClasses grade_calculator;
     grade_calculator.show();
 
     return app.exec();

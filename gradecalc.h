@@ -2,32 +2,27 @@
 #define GRADECALC_H
 
 #include <QWidget>
-
-class QProgressBar;
-class QRadioButton;
-class GradeObjects;
+#include <QProgressBar>
+#include <QRadioButton>
+#include "gradeobjects.h"
 
 class GradeCalc : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GradeCalc(const QString &option, QWidget *parent = 0);
+    explicit GradeCalc(const int option, QWidget *parent = 0);
 
 signals:
 
 private slots:
-    void hwEntered();
-    void mtEntered();
-    void fpEntered();
-    void finalEntered();
     void calculateFinalGradeAll();
     void calculateFinalGradeDrop();
 
 private:
-    QString &option;
-    QString &hw_num;
-    QString &mt_num;
-    QString &fp_num;
+    int option;
+    int hw_num;
+    int mt_num;
+    int fp_num;
 
     GradeObjects *homeworkSect;
     GradeObjects *midtermSect;

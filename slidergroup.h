@@ -2,20 +2,20 @@
 #define SLIDERGROUP_H
 
 #include <QWidget>
-
-class QLabel;
-class QSlider;
-class QSpinBox;
-class QLineEdit;
+#include <QLabel>
+#include <QSlider>
+#include <QSpinBox>
+#include <QLineEdit>
 
 class SliderGroup : public QWidget
 {
     Q_OBJECT
 public:
     explicit SliderGroup(const QString &name, QWidget *parent = 0);
+    QString getObjectName();
 
 signals:
-    valueChanged(int value);
+    void valueChanged(int value);
 
 public slots:
     void setValue(int value);

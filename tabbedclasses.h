@@ -2,10 +2,9 @@
 #define TABBEDCLASSES_H
 
 #include <QWidget>
+#include <QTabWidget>
 
-class QTabWidget;
-
-class GradeCalc;
+#include "gradecalc.h"
 
 class TabbedClasses : public QWidget
 {
