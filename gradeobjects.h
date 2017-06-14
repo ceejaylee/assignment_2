@@ -15,7 +15,6 @@ public:
     double returnSectionScoreDrop();
 
 signals:
-    void valueChanged(int value);
 
 private slots:
     void addToList(int value);
@@ -24,8 +23,8 @@ private:
     QString name_of_sect;
     int number_of_sect;
 
-    double scoresList[0];
-    SliderGroup *gradeObjects[0];
+    double scoresList[8];
+    SliderGroup *gradeObjects[8];
     double sectionScore;
     double sectionScoreDrop;
 

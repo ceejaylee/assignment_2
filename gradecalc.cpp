@@ -37,7 +37,7 @@ GradeCalc::GradeCalc(const int option, QWidget *parent) : QWidget(parent)
     class_score->setOrientation(Qt::Horizontal);
     class_score->setTextVisible(true);
 
-    QGridLayout *mainLayout = new QGridLayout;
+    QGridLayout *mainLayout = new QGridLayout(this);
 #if defined(Q_OS_SYMBIAN) || defined(Q_WS_MAEMO_5) || defined(Q_WS_SIMULATOR)
     mainLayout->setSizeConstraint(QLayout::SetNoConstraint);
 #else
@@ -65,7 +65,7 @@ void GradeCalc::calculateFinalGradeAll()
     double midterm = midtermSect->returnSectionScore();
     double finalProject = finalproSect->returnSectionScore();
     double finalExam = finalexamSect->returnSectionScore();
-    double finalGrade;
+    double finalGrade = 0;
 
     if (QString::number(option) == 0)
     {
@@ -85,7 +85,7 @@ void GradeCalc::calculateFinalGradeDrop()
     double midterm = midtermSect->returnSectionScoreDrop();
     double finalProject = finalproSect->returnSectionScoreDrop();
     double finalExam = finalexamSect->returnSectionScoreDrop();
-    double finalGrade;
+    double finalGrade = 0;
 
     if (QString::number(option) == 0)
     {
@@ -96,6 +96,5 @@ void GradeCalc::calculateFinalGradeDrop()
     {
         finalGrade = homework * 15 + finalExam * 50 + finalProject * 35;
     }
-
     class_score->setValue(finalGrade);
 }

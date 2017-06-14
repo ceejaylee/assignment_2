@@ -6,6 +6,7 @@
 #include <QSlider>
 #include <QSpinBox>
 #include <QLineEdit>
+#include <QGridLayout>
 
 class SliderGroup : public QWidget
 {
@@ -15,7 +16,7 @@ public:
     QString getObjectName();
 
 signals:
-    void valueChanged(int value);
+    void valueHasChanged(int value);
 
 public slots:
     void setValue(int value);
@@ -25,6 +26,7 @@ private:
     QSlider *slider;
     QSpinBox *spinbox;
     QLabel *slash;
+    QGridLayout *sliderLayout;
 };
 
 #endif // SLIDERGROUP_H

@@ -6,15 +6,14 @@ GradeObjects::GradeObjects(const QString &name, const int &number, QWidget *pare
     name_of_sect = name;
     number_of_sect = number;
 
-    QGridLayout *sectionLayout = new QGridLayout;
+    QGridLayout *sectionLayout = new QGridLayout(this);
 #if defined(Q_OS_SYMBIAN) || defined(Q_WS_MAEMO_5) || defined(Q_WS_SIMULATOR)
     sectionLayout->setSizeConstraint(QLayout::SetNoConstraint);
 #else
     sectionLayout->setSizeConstraint(QLayout::SetFixedSize);
 #endif
     const int n = number_of_sect;
-    gradeObjects[n];
-    scoresList[n];
+
 
     if (n == 0)
     {
@@ -24,6 +23,7 @@ GradeObjects::GradeObjects(const QString &name, const int &number, QWidget *pare
     {
         gradeObjects[0] = createSlider(name_of_sect);
         sectionLayout->addWidget(gradeObjects[0], 0, 0);
+        connect(gradeObjects[0], SIGNAL(valueHasChanged(SliderGroup::value)), gradeObjects[0], SLOT(addToList(SliderGroup::value)));
     }
     else
     {
@@ -34,6 +34,7 @@ GradeObjects::GradeObjects(const QString &name, const int &number, QWidget *pare
             QString label = name_of_sect;
             label += numbering;
             gradeObjects[i] = createSlider(label);
+            connect(gradeObjects[i], SIGNAL(valueHasChanged(SliderGroup::value)), gradeObjects[i], SLOT(addToList(SliderGroup::value)));
             sectionLayout->addWidget(gradeObjects[i], i, 0);
         }
     }
@@ -43,7 +44,6 @@ GradeObjects::GradeObjects(const QString &name, const int &number, QWidget *pare
 SliderGroup *GradeObjects::createSlider(QString &text)
 {
     SliderGroup *sldrgrp = new SliderGroup(text);
-    connect(sldrgrp, SIGNAL(valueChanged(value)), this, SLOT(addToList(value)));
     return sldrgrp;
 }
 
@@ -62,7 +62,6 @@ void GradeObjects::addToList(int value)
         scoresList[i] = value;
     }
     calculateSectionGrade();
-    emit valueChanged(value);
 }
 
 void GradeObjects::calculateSectionGrade()

@@ -9,5 +9,7 @@ TabbedClasses::TabbedClasses(QWidget *parent) : QWidget(parent)
     classTabs->addTab(pic10b, tr("PIC 10B"));
     classTabs->addTab(pic10c, tr("PIC 10C"));
 
+    resize (700,700);
+
     setWindowTitle(tr("Grade Calculator"));
 }
